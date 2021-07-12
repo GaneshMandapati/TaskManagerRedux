@@ -10,7 +10,7 @@ const config = {
     }
 };
 
-export const showAllTasks = () => async dispatch => {  //RETRIEVE
+export const showAllTasks = () => async dispatch => {
 
     await axios
         .get(
@@ -24,18 +24,9 @@ export const showAllTasks = () => async dispatch => {  //RETRIEVE
         })
 }
 
-export const showProduct = id => async dispatch => {  //RETRIEVE ONE
-
-    const result = await axios.get(`http://localhost:5000/products/${id}`)
-
-    dispatch({
-        type: SHOW_TASK,
-        payload: result.data
-    })
-}
 
 
-export const deleteTask = id => async dispatch => {  //DELETE
+export const deleteTask = id => async dispatch => {
     await axios
         .delete(
             `https://stage.api.sloovi.com/task/lead_6996a7dcdddc4af3b4f71ccb985cea38/${id}`,
@@ -55,7 +46,7 @@ export const editTask = newTaskData => async dispatch => {
         `https://stage.api.sloovi.com/task/lead_6996a7dcdddc4af3b4f71ccb985cea38/task_b459a96f228147d68a70145e5c7c1517`,
         config
     ).then((response) => {
-        console.log("sucesss")
+
         dispatch({
             type: EDIT_TASK,
             payload: response.data.results
@@ -72,7 +63,7 @@ export const addTask = newTaskData => async dispatch => {
             JSON.stringify(newTaskData),
             config
         ).then((response) => {
-            console.log(response);
+
             dispatch({
                 type: ADD_TASK,
                 payload: response.data.results
